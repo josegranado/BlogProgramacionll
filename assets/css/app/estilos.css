@@ -1,0 +1,26 @@
+*
+{
+	margin:0;
+	padding:0;
+}
+
+#app
+{
+	width:100vw;
+	height:200vh !important;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-color: rgba(0,0,0,0.6);
+	background-blend-mode: color-burn; 
+}
+.nav-link {
+	color:#FFF;
+	margin:5%;
+	width:95%;
+}
+.btn
+{
+	padding-left:40px !important;
+	padding-right:40px !important;
+}
