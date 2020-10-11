@@ -48,12 +48,39 @@
     <section id="main">
         <div class="container">
           <div class="row">
-              <div class="col-12">
-                <div class="card text-center">
+              <div class="col-6">
+                <div class="card text-center" style="margin: 5px auto;">
                   <div class="card-body">
                     <h5 class="card-title">Articulos</h5>
                     <a href="crear-articulo.php" class="btn btn-outline-success">Crear</a>
                     <a href="ver-articulos.php" class="btn btn-outline-primary">Ver</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card text-center" style="margin: 5px auto;">
+                  <div class="card-body">
+                    <h5 class="card-title">Productos</h5>
+                    <a href="crear-producto.php" class="btn btn-outline-success">Crear</a>
+                    <a href="ver-productos.php" class="btn btn-outline-primary">Ver</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card text-center" style="margin: 5px auto;">
+                  <div class="card-body">
+                    <h5 class="card-title">Categorias</h5>
+                    <a href="crear-categoria.php" class="btn btn-outline-success">Crear</a>
+                    <a href="ver-categorias.php" class="btn btn-outline-primary">Ver</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card text-center" style="margin: 5px auto;">
+                  <div class="card-body">
+                    <h5 class="card-title">Etiquetas</h5>
+                    <a href="crear-etiqueta.php" class="btn btn-outline-success">Crear</a>
+                    <a href="ver-etiquetas.php" class="btn btn-outline-primary">Ver</a>
                   </div>
                 </div>
               </div>

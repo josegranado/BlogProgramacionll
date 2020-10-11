@@ -3,27 +3,32 @@
   session_start();
   require_once 'database.php';
   require_once 'models/User.php';
-  require_once 'models/Article.php';
+  require_once 'models/Producto.php';
   if (isset($_SESSION['user_id'])) {
 
     $user = User::find($_SESSION['user_id'], $conn);
   }
   
-  if (!empty($_POST['title']) && !empty($_POST['description'])&& !empty($_POST['content'])&& !empty($_POST['usuario_id'])) {
+  if (!empty($_POST['title']) && 
+  !empty($_POST['description'])&& 
+  !empty($_POST['content'])&& 
+  !empty($_POST['usuario_id']) &&
+  !empty($_POST['price'])) {
 
-      $article = Article::create([
+      $article = Producto::create([
       		'title' => $_POST['title'],
       		'description' => $_POST['description'],
-      		'content' => $_POST['content'],
+            'content' => $_POST['content'],
+            'price' => $_POST['price'],
       		'usuario_id' => $_POST['usuario_id']
       ], $conn);
       if($article)
       {
-      		$message = "ARTICULO CREADO EXITOSAMENTE";
+      		$message = "PRODUCTO CREADO EXITOSAMENTE";
       }
       else
       {
-      		$message = "ERROR, EL ARTICULO NO FUE CREADO.";
+      		$message = "ERROR, EL PRODUCTO NO FUE CREADO.";
       }
 } ?>
 <?php require 'partials/header.php'; ?>
@@ -50,6 +55,7 @@
               <div class="col-12">
               	<div class="alert alert-success" style="width:100%">
               	<p><?php echo $message; ?></p>
+              </div>
               </div>
               <div class="col-6">
                 <div class="card text-center">
@@ -87,7 +93,7 @@
                   </div>
                 </div>
               </div>
-          </div>
+          
         </div>
     </section>
   </div>

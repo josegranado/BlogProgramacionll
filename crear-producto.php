@@ -37,8 +37,8 @@
               <div class="col-12">
                 <div class="card text-center">
                   <div class="card-body">
-                    <h5 class="card-title">Crear articulo</h5>
-                    <form action="store-articulo.php" method="POST">
+                    <h5 class="card-title">Crear producto</h5>
+                    <form action="store-producto.php" method="POST">
                       <div class="form-group">
                         <label for="title">Titulo</label>
                         <input class="form-control" name="title" id="title" type="text" placeholder="Ingresa el titulo">
@@ -50,6 +50,10 @@
                       <div class="form-group">
                           <label for="content">Contenido</label>
                           <textarea name="content" class="form-control" id="content" rows="3"></textarea>
+                      </div>
+                      <div class="form-group">
+                          <label for="price">Price</label>
+                          <input class="form-control" step="0.01" name="price" id="price" type="number" placeholder="Ingresa el precio">
                       </div>
                       <div class="form-group">
                           <input class="form-control" name="usuario_id" id="usuario_id" type="hidden" placeholder="Ingresa el titulo" value="<?php echo $user['id']; ?>">

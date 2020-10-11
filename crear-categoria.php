@@ -2,10 +2,9 @@
   
   session_start();
   require_once 'database.php';
+  require_once 'models/Categorie.php';
   require_once 'models/User.php';
-  require_once 'controllers/UserController.php';
   if (isset($_SESSION['user_id'])) {
-
     $user = User::find($_SESSION['user_id'], $conn);
   }
 ?>
@@ -38,23 +37,16 @@
                 <div class="card text-center">
                   <div class="card-body">
                     <h5 class="card-title">Crear articulo</h5>
-                    <form action="store-articulo.php" method="POST">
+                    <form action="store-categorias.php" method="POST">
                       <div class="form-group">
-                        <label for="title">Titulo</label>
-                        <input class="form-control" name="title" id="title" type="text" placeholder="Ingresa el titulo">
+                        <label for="nombre">Nombre</label>
+                        <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Ingresa el titulo">
                       </div>
                       <div class="form-group">
                           <label for="description">Descripcion</label>
                           <textarea name="description" class="form-control" id="description" rows="3"></textarea>
                       </div>
-                      <div class="form-group">
-                          <label for="content">Contenido</label>
-                          <textarea name="content" class="form-control" id="content" rows="3"></textarea>
-                      </div>
-                      <div class="form-group">
-                          <input class="form-control" name="usuario_id" id="usuario_id" type="hidden" placeholder="Ingresa el titulo" value="<?php echo $user['id']; ?>">
-                      </div>
-                      <button style="margin:auto" type="submit" class="btn btn-outline-success btn-block">Crear Articulo</button>
+                      <button style="margin:auto" type="submit" class="btn btn-outline-success btn-block">Crear Categoria</button>
                     </form>
                   </div>
                 </div>

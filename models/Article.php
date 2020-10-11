@@ -7,7 +7,7 @@
 		{
 			try
 			{
-				$articles = $conn->prepare("SELECT * FROM publicaciones");
+				$articles = $conn->prepare("SELECT * FROM publicaciones WHERE usuario_id=:id");
 				$articles->bindParam(':id', $id);
     			$articles->execute();
 				$results = $articles->fetchAll();
@@ -50,16 +50,38 @@
 				die('Connection FAiled: '. $e->getMessage());
 			}
 		}
-		public function list()
+		public static function update($article, $id, $conn)
 		{
-
+			try
+			{
+				$updated = $conn->prepare('UPDATE publicaciones SET 
+				title = :title, 
+				description = :description,
+				content = :content
+				WHERE id = :id
+				');
+				$updated->bindParam(':id', $id);
+				$updated->bindParam(':title', $article['title']);
+		    	$updated->bindParam(':description', $article['description']);
+				$updated->bindParam(':content', $article['content']);
+				return $updated->execute();
+			}
+			catch( PDOEXception $e)
+			{
+				die('Connection FAiled: '. $e->getMessage());
+			}
 		}
-		public function update()
+		public static function delete($id, $conn)
 		{
-
-		}
-		public function delete()
-		{
-
+			try
+			{
+				$deleted = $conn->prepare('DELETE FROM publicaciones WHERE id = :id');
+				$deleted->bindParam(':id', $id);
+				return $deleted->execute();
+			}
+			catch(PDOException $e)
+			{
+				die('Connection failed'. $e->getMessage());
+			}
 		}
 	}

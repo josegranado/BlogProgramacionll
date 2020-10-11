@@ -3,11 +3,11 @@
   session_start();
   require_once 'database.php';
   require_once 'models/User.php';
-  require_once 'models/Article.php';
+  require_once 'models/Producto.php';
   if (isset($_SESSION['user_id'])) {
 
     $user = User::find($_SESSION['user_id'], $conn);
-    $articles = Article::all($_SESSION['user_id'],$conn);
+    $productos = Producto::all($_SESSION['user_id'],$conn);
   }
  
 ?>
@@ -36,21 +36,24 @@
         <div class="container">
         	<h1 class="text-white text-center">Todos los articulos</h1>
           <div class="row text-center">
-              <?php if(!$articles)
+              <?php if(!$productos)
               {
                 ?> <p class="text-white text-center" style="text-align:center"> 
-                No hay articulos para mostrar.  
+                No hay productos para mostrar.  
               </p>
               <?php }else{ ?>
-          	 <?php foreach($articles as $article){?>
+          	 <?php foreach($productos as $producto){?>
 
               <div class="col-6" style="margin:10px auto;">
                 <div class="card text-center">
                   <div class="card-body">
-                    <h5 class="card-title"><b>Titulo: &nbsp</b><?php echo $article['title']; ?></h5>
-                    <p class="card-text"><b>Descripcion: &nbsp</b><?php echo $article['description']; ?></p>
-                    <p><a href="edit-articulo.php?id=<?php echo $article['id']?>" class="btn btn-outline-success">Editar</a>
-                    <a href="delete-articulo.php?id=<?php echo $article['id']?>" class="btn btn-outline-danger">Delete</a></p>
+                    <h5 class="card-title"><b>Titulo: &nbsp</b><?php echo $producto['title']; ?></h5>
+                    <p class="card-text">
+                        <b>Descripcion: &nbsp</b><?php echo $producto['description']; ?> <br>
+                        <b>Price: &nbsp</b><?php echo $producto['price']; ?>
+                    </p>
+                    <p><a href="edit-producto.php?id=<?php echo $producto['id']?>" class="btn btn-outline-success">Editar</a>
+                    <a href="delete-producto.php?id=<?php echo $producto['id']?>" class="btn btn-outline-danger">Delete</a></p>
                   </div>
                 </div>
               </div>

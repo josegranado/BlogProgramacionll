@@ -3,31 +3,29 @@
   session_start();
   require_once 'database.php';
   require_once 'models/User.php';
-  require_once 'models/Article.php';
+  require_once 'models/Categorie.php';
   if (isset($_SESSION['user_id'])) {
 
     $user = User::find($_SESSION['user_id'], $conn);
   }
   
-  if (!empty($_POST['title']) && !empty($_POST['description'])&& !empty($_POST['content'])&& !empty($_POST['usuario_id'])) {
+  if (!empty($_POST['nombre']) && !empty($_POST['description'])) {
 
-      $article = Article::create([
-      		'title' => $_POST['title'],
+      $categorie = Categorie::create([
+      		'nombre' => $_POST['nombre'],
       		'description' => $_POST['description'],
-      		'content' => $_POST['content'],
-      		'usuario_id' => $_POST['usuario_id']
       ], $conn);
-      if($article)
+      if($categorie)
       {
-      		$message = "ARTICULO CREADO EXITOSAMENTE";
+      		$message = "CATEGORIA CREADA EXITOSAMENTE";
       }
       else
       {
-      		$message = "ERROR, EL ARTICULO NO FUE CREADO.";
+      		$message = "ERROR, LA CATEGORIA NO FUE CREADA.";
       }
 } ?>
 <?php require 'partials/header.php'; ?>
-<?php if(!empty($article)) { ?>
+<?php if(isset($categorie)) { ?>
 <div id="app" style="height:200vh;width:100%; background-image: url(assets/img/Fondo.jpg);">
     <nav class="navbar navbar-expand-lg" >
       <div class="container">
@@ -49,7 +47,8 @@
           <div class="row">
               <div class="col-12">
               	<div class="alert alert-success" style="width:100%">
-              	<p><?php echo $message; ?></p>
+                  <p><?php echo $message; ?></p>
+              	</div>
               </div>
               <div class="col-6">
                 <div class="card text-center">
